@@ -1,6 +1,17 @@
 <html>
 <head>
 <title> Sign up</title>
+<Script language="javascript">
+function getParent(){
+	
+	if(document.getElementById('role').value=="child"){
+		
+		document.getElementById('parent').style.display = 'block';
+	}else{
+		document.getElementById('parent').style.display = 'none';
+	}
+}
+</script>
 </head>
 
 <body>
@@ -13,6 +24,15 @@ Gender:   <input type="radio" id="gender" name="gender" value="male"></input> Ma
 
 Username: <input type="text" id="username" name="username" ></input><br>
 Password: <input type="password" id="password"  name="password"></input><br>
+Sign Up as (Role) :  <select name="role" id="role" onChange="getParent(this);">
+<option >Select</option>
+<option value="child">child</option>
+<option value="teacher">teacher</option>
+<option value="parent">parent</option>
+</select><br>
+<div id="parent" style="display:none">
+Parent <input type = "text" id="parent" name="parent"></input><br>
+</div>
  <input type="submit" id="submit" name="submitSignUp"></input>
 </form>
 

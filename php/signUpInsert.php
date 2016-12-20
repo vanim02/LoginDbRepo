@@ -11,15 +11,21 @@ if($connect){
 	$dob=$_POST['dob'];
 	$gender=$_POST['gender'];
 	$password=$_POST['password'];
-	//$userrole=$_POST['userrole'];
-	//$parent=$_POST['parent'];
-	$query="insert into signupdetails values ('".$username."','".$firstname."','".$lastname."','".$dob."','".$gender."','".$password."',null);";
-	print($query);
-	if($connect->query($query)){
-		"<br>".print("inserted successfully");
-	}else{
-		"<br>".print("insertion failed");
+	$role=$_POST['role'];
+	$query="insert into signupdetails   (username,firstname,lastname,dateofbirth,gender,password,role,parent,signupdate,decision) values ('".$username."','".$firstname."','".$lastname."','".$dob."','".$gender."','".$password."','".$role."',null,now(),null);";
+	if($role=="child"){
+		$parent=$_POST['parent'];
+		$query="insert into signupdetails   (username,firstname,lastname,dateofbirth,gender,password,role,parent,signupdate,decision) values ('".$username."','".$firstname."','".$lastname."','".$dob."','".$gender."','".$password."','".$role."','".$parent."',now(),null);";
 	}
+	
+	
+	//print($query);
+		if($connect->query($query)){
+			"<br>".print("Sign Up successful. Wait for the approval from admin. If you think approved, click on login <a href=login.php >Login here</a>");
+			
+		}else{
+			"<br>".print("Sign up failed");
+		}
 	}else{
 		print("db not connected");
 	}

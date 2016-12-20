@@ -33,7 +33,11 @@ $connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 		$result=$connect->query("select * from signupdetails where decision IS NULL");
 		if($result->num_rows>0){
 			while($field=$result->fetch_assoc()){
-				print($field['firstname']."____ ".$field['lastname']);
+				print($field['firstname']."____ ".$field['lastname']."____ as $field['role']");
+				print()
+				print("<input type=\"radio\" id=\"decision\" name=\"descion\" value=\"approve\"></input> Approve <input type=\"radio\" id=\"deciosn\" name=\"decision\" value=\"Decline\"></input> Decline"
+				)."<br>";
+				print("input type=\"radio\" id=\" \"")
 			}
 		}
 	}

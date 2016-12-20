@@ -1,9 +1,6 @@
-<html>
-<head>
-<title> Teacher Page</title>
-</head>
-<body>
-<table style="border: 1px solid black">
+<?php 
+
+print("<table style=\"border: 1px solid black\">
 
 <h3> Teacher Page </h3>
 <tr>
@@ -24,7 +21,6 @@
 </td>
 </tr>
 </table>
-<input type="button" id="logoutparent" value="Logout"></input>
-</body>
+<input type=\"button\" id=\"logoutparent\" value=\"Logout\"></input>");
 
-</html>
+?>

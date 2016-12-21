@@ -26,9 +26,12 @@ if($connect){
 		}else{
 			"<br>".print("Sign up failed");
 		}
+		mysqli_close($connect);
 	}else{
 		print("db not connected");
 	}
 }
 
+		mysqli_close($connect);
+	
 ?>

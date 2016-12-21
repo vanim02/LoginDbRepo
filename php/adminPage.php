@@ -3,7 +3,27 @@
 <title> Admin Page</title>
 </head>
 <body>
-<h1> Admin Page </h1>
+<?php
+	if(isset($_POST['submitdecision'])){
+		$connect=mysqli_connect("127.0.0.1","root","1234","logindb");
+		if($connect){
+			print("connected still");
+			$decision=$_POST['decision'];
+			$query="update signupdetails set decision='".$decision."' where username = '".$field['username']."'";
+			mysqli_close($connect);
+		}
+	}
+?>
+	<table>
+		<tr>
+			<td>
+				<h1> Admin Page </h1>
+			</td>
+			<td>
+				<input type="button" id="logout" value="Logout" onClick="window.open('logout.php','_self')"></input>
+			</td>
+		</tr>
+	</table>
 <?php
 $connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 ?>
@@ -17,7 +37,7 @@ $connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 		$result=$connect->query("select * from signupdetails where decision='A'");
 		if($result->num_rows>0){
 			while($field=$result->fetch_assoc()){
-				print($field['firstname']."___         ".$field['lastname'])."<br>";
+				print($field['firstname']." ".$field['lastname'])."<br>";
 			}
 		}
 	}
@@ -32,13 +52,17 @@ $connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 	}else{
 		$result=$connect->query("select * from signupdetails where decision IS NULL");
 		if($result->num_rows>0){
+			print("<table>");
+			print("<tr><th>Firstname Lastname</th><th>Username</th><th>Role</th></tr>");
 			while($field=$result->fetch_assoc()){
-				print($field['firstname']."____ ".$field['lastname']."____ as $field['role']");
-				print()
-				print("<input type=\"radio\" id=\"decision\" name=\"descion\" value=\"approve\"></input> Approve <input type=\"radio\" id=\"deciosn\" name=\"decision\" value=\"Decline\"></input> Decline"
-				)."<br>";
-				print("input type=\"radio\" id=\" \"")
+				print("<tr><td>".$field['firstname']." ".$field['lastname']."</td>");
+				print("<td>".$field['username']."</td>");
+				print("<td>".$field['role']."</td></tr>");
+				print("<tr><td><input type=\"radio\" id=\"decision\" name=\"descion\" value=\"approve\"></input> Approve </td><td> <input type=\"radio\" id=\"deciosn\" name=\"decision\" value=\"Decline\"></input> Decline</td>")."<br>";	
+				
+				print("<td><input type=\"submit\" id=\"submitdecision\" name=\"submitdecision\" onClick=\"adminPage.php\"></td>");
 			}
+			print("</table>");
 		}
 	}
 	?>
@@ -53,12 +77,16 @@ $connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 		$result=$connect->query("select * from signupdetails where decision='D'");
 		if($result->num_rows>0){
 			while($field=$result->fetch_assoc()){
-				print($field['firstname']."___". $field['lastname']);
+				print($field['firstname']." ". $field['lastname'])."<br>";
 			}
 		}
 	}
 	?>
 	</div>
+	
+	<?php
+		mysqli_close($connect);
+	?>
 </body>
 
 </html>

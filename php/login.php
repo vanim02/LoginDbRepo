@@ -6,13 +6,13 @@
 <body>
 <h3> Login </h3>
 	<form name="loginform" method="POST" action="loginValidation.php">
-		Username: <input type="text" id="loginuser" name="username" ></input><br>
-		Password: <input type="password" id="loginpass" name="password" ></input><br>
+		Username: * <input type="text" id="loginuser" name="username" required="true"></input><br>
+		Password: * <input type="password" id="loginpass" name="password" required="true"></input><br>
 
-		Login As (Role):   <select name="role">
-								<option >Select</option>
-								<option >Teacher</option>
-								<option >Parent</option>
+		Login As (Role): *   <select name="role" required="true">
+								<option value="">Select</option>
+								<option value="teacher" >Teacher</option>
+								<option value="parent">Parent</option>
 							</select><br>
 		<input type="submit" name="submitlogin" id="login" value="Login"></input>
 	</form>

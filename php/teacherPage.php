@@ -8,8 +8,11 @@
 				<th colspan="2"> Teacher Page </th>
 			</tr>
 			<tr>
-				<th colspan="2">
-					
+				<th >
+					Parent
+				</th>
+				<th>
+					Children
 				</th>
 			</tr>
 			<?php
@@ -18,8 +21,16 @@
 				if($connect){
 					$query="select * from signupdetails where role='parent'";
 					$result=$connect->query($query);
-					while($dbfield=$result->fetch_assoc()){
-						print("<tr><td>".$dbfield['username']."</td></tr>");
+						while($dbfield=$result->fetch_assoc()){
+							print("<tr><td>".$dbfield['username']."</td>");
+							$query2="select * from signupdetails where role='child' and parent='".$dbfield['username']."'";
+							$result2=$connect->query($query2);
+							//creating new table in the second column for children
+							print("<td><table>");
+							while($chfield=$result2->fetch_assoc()){
+								print("<tr><td>".$chfield['username']."</td></tr>");
+							}
+						print("</table></td></tr>");
 					}
 							mysqli_close($connect);
 				}else{

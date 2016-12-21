@@ -26,8 +26,9 @@
 ?>
 <h3> Enter the user name of child to delete </h3>
 	<form name="deleteform" method="POST" action="deleteChild.php">
-		Username: <input type="text" id="deleteuser" name="deleteuser" ></input><br>
+		Username: * <input type="text" id="deleteuser" name="deleteuser" required="true"></input><br>
 		<input type="submit" name="submitdelete" id="delete" value="Delete"></input>
+		<input type="button" id="cancel" name="cancel" value="cancel" onClick="window.open('parentPage.php','_self')"></input>
 	</form>
 </body>
 </html>

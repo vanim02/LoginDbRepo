@@ -40,8 +40,8 @@ Gender:   <input type="radio" id="gender" name="gender" value="male" ></input> M
 Username: * <input type="text" id="username" name="username" required="true"></input><br>
 Password: * <input type="password" id="password"  name="password" required="true"></input><br>
 
- <input type="submit" id="submit" name="addchild" ></input>
- <input type="button" id="cancel" name="cancel" value="cancel" onClick="window.open('parentPage.php','_self')"></input>
+ <input type="submit" id="submit" name="addchild" onClick="addChild.php"></input>
+ <input type="button" id="cancel" name="cancel" value="cancel" onClick="window.open('addChild.php','_self')"></input>
 </form>
 
 </body>

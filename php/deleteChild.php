@@ -1,7 +1,7 @@
 
 <html>
 <head>
-<title> Admin Page</title>
+<title>Delete child< /title>
 </head>
 <body>
 <?php

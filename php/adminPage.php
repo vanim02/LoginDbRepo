@@ -54,19 +54,22 @@ $connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 	}else{
 		$result=$connect->query("select * from signupdetails where decision IS NULL");
 		if($result->num_rows>0){
-			print("<form name=\"decisionform\" method=\"POST\" action=\"adminPage.php\">");
+			
 			print("<table>");
 			print("<tr><th>Firstname Lastname</th><th>Username</th><th>Role</th></tr>");
 			while($field=$result->fetch_assoc()){
 				print("<tr><td>".$field['firstname']." ".$field['lastname']."</td>");
 				print("<td><input  type=\"hidden\" name=\"username\" value=\"".$field['username']."\">".$field['username']."</input></td>");
 				print("<td>".$field['role']."</td></tr>");
-				print("<tr><td><input type=\"radio\" id=\"decision\" name=\"decision\" value=\"approve\"></input> Approve </td><td> <input type=\"radio\" id=\"decision\" name=\"decision\" value=\"Decline\"></input> Decline</td>")."<br>";	
+				print("</table>");
+				print("<form name=\"decisionform\" method=\"POST\" action=\"adminPage.php\">");
+				print("<input type=\"radio\" id=\"decision\" name=\"decision\" value=\"approve\"></input> Approve </td><td> <input type=\"radio\" id=\"decision\" name=\"decision\" value=\"Decline\"></input> Decline")."<br>";	
 				
-				print("<td><input type=\"submit\" id=\"submitdecision\" name=\"submitdecision\" ></input></td>");
+				print("<input type=\"submit\" id=\"submitdecision\" name=\"submitdecision\" ></input>");
+				print("</form>");
 			}
-			print("</table>");
-			print("</form>");
+			
+			
 		}
 	}
 	?>

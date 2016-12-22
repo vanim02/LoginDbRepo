@@ -34,7 +34,7 @@ Sign Up as (Role) : *  <select name="role" required="true" id="role" onChange="g
 <option value="parent">parent</option>
 </select><br>
 <div id="parent" style="display:none">
-Parent: * <input type = "text" id="parent" name="parent"  ></input><br>
+Parent: * <input type = "text" id="parent" name="parent"  required="true"></input><br>
 </div>
  <input type="submit" id="submit" name="submitSignUp" onsubmit="validateParent();"></input>
 </form>

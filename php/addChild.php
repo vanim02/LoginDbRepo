@@ -7,13 +7,21 @@
 <body>
 <?php
 	if(isset($_POST['addchild'])){
+		$username=$_POST['username'];
+	$firstname=$_POST['firstname'];
+	$lastname=$_POST['lastname'];
+	$dob=$_POST['dob'];
+	$gender=$_POST['gender'];
+	$password=$_POST['password'];
+
+		
 		session_start();
 		$connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 		if($connect){
-			if(empty($_POST['gender'])){
-				$_POST['gender']=null;
+			if(empty($gender)){
+				$gender=null;
 			}
-			$query="insert into signupdetails (username, firstname, lastname, dateofbirth, gender, password, role, parent, signupdate, decision) values ('".$_POST['username']."','".$_POST['firstname']."','".$_POST['lastname']."','".$_POST['dob']."','".$_POST['gender']."','".$_POST['password']."','child','".$_SESSION['inputuser']."',now(),null)";
+			$query="insert into signupdetails (username, firstname, lastname, dateofbirth, gender, password, role, parent, signupdate, decision) values ('".$username."','".$firstname."','".$lastname."','".$dob."','".$gender."','".$password."','child','".$_SESSION['inputuser']."',now(),null)";
 			print($query);
 			$result=$connect->query($query);
 			if($result){

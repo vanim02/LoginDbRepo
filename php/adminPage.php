@@ -5,13 +5,15 @@
 <body>
 <?php
 	if(isset($_POST['submitdecision'])){
-
 		$connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 		if($connect){
-			print("connected still");
-		
-			$query="update signupdetails set decision='".$_POST['decision']."' where username = '".$_POST['username']."'";
-			print($query);
+			$decision=$_POST['decision'];
+			$user=$_POST['username'];
+			$query="update signupdetails set decision='".$decision."' where username = '".$user."'";
+			
+			if($result=$connect->query($query)){
+				print("Decision processed");
+			}
 			mysqli_close($connect);
 		}
 	}
@@ -54,22 +56,22 @@ $connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 	}else{
 		$result=$connect->query("select * from signupdetails where decision IS NULL");
 		if($result->num_rows>0){
-			
-			print("<table>");
-			print("<tr><th>Firstname Lastname</th><th>Username</th><th>Role</th></tr>");
-			while($field=$result->fetch_assoc()){
+			?>
+			<table>
+			<tr><th>Firstname Lastname</th><th>Username</th><th>Role</th></tr>
+		<?php	while($field=$result->fetch_assoc()){
 				print("<tr><td>".$field['firstname']." ".$field['lastname']."</td>");
 				print("<td><input  type=\"hidden\" name=\"username\" value=\"".$field['username']."\">".$field['username']."</input></td>");
 				print("<td>".$field['role']."</td></tr>");
 				print("</table>");
 				print("<form name=\"decisionform\" method=\"POST\" action=\"adminPage.php\">");
-				print("<input type=\"radio\" id=\"decision\" name=\"decision\" value=\"approve\"></input> Approve </td><td> <input type=\"radio\" id=\"decision\" name=\"decision\" value=\"Decline\"></input> Decline")."<br>";	
-				
-				print("<input type=\"submit\" id=\"submitdecision\" name=\"submitdecision\" ></input>");
+				print("<input type=\"radio\" id=\"decision\" name=\"decision\" value=\"A\"></input> Approve"); 
+				print("<input type=\"radio\" id=\"decision\" name=\"decision\" value=\"D\"></input> Decline");
+				print("<input type=\"hidden\" name=\"username\" value=\"".$field['username']."\">");
+				print("<br>");
+				print("<INPUT TYPE=\"submit\" NAME=\"submitdecision\" VALUE=\"submit_".$field['username']."\"></INPUT>");
 				print("</form>");
 			}
-			
-			
 		}
 	}
 	?>

@@ -1,12 +1,12 @@
-
 <html>
 <head>
-<title>Delete child< /title>
+<title>Delete child</title>
 </head>
 <body>
 <?php
+	include 'dbconnect.php';
 	if(isset($_POST['submitdelete'])){
-		$connect=new mysqli("127.0.0.1","root","1234","logindb");
+		$connect=connect();
 		if($connect){
 			$query="delete from signupdetails where username='".$_POST['deleteuser']."'";
 			$result=$connect->query($query);

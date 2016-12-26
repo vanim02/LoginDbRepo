@@ -1,8 +1,9 @@
 <?php
 
-
+include 'dbconnect.php';
 if(isset($_POST['submitSignUp'])){
-	$connect= mysqli_connect("127.0.0.1","root","1234","logindb");
+	
+$connect=connect();
 if($connect){
 	$username=$_POST['username'];
 	$firstname=$_POST['firstname'];

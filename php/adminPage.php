@@ -4,18 +4,25 @@
 </head>
 <body>
 <?php
+include 'dbconnect.php';
+
+
 	if(isset($_POST['submitdecision'])){
-		$connect=mysqli_connect("127.0.0.1","root","1234","logindb");
-		if($connect){
+		//$connect=mysqli_connect("127.0.0.1","root","1234","logindb");
+		$connect1=connect();
+			if($connect1){
 			$decision=$_POST['decision'];
 			$user=$_POST['username'];
 			$query="update signupdetails set decision='".$decision."' where username = '".$user."'";
 			
-			if($result=$connect->query($query)){
+			if($result=$connect1->query($query)){
 				print("Decision processed");
 			}
-			mysqli_close($connect);
+			mysqli_close($connect1);
+		}else{
+			print("connection failure");
 		}
+
 	}
 ?>
 	<table>
@@ -29,7 +36,7 @@
 		</tr>
 	</table>
 <?php
-$connect=mysqli_connect("127.0.0.1","root","1234","logindb");
+$connect=connect();
 ?>
 <div id="approved" style="width: 30%; height: 100%;float: left;background-color:red;border: 1px solid black;" >
 	<h3>Approved Users</h3>
@@ -41,7 +48,7 @@ $connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 		$result=$connect->query("select * from signupdetails where decision='A'");
 		if($result->num_rows>0){
 			while($field=$result->fetch_assoc()){
-				print($field['firstname']." ".$field['lastname'])."<br>";
+				print($field['firstname']." ".$field['lastname']." ".$field['username'])."<br>";
 			}
 		}
 	}
@@ -60,8 +67,7 @@ $connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 			<table>
 			<tr><th>Firstname Lastname</th><th>Username</th><th>Role</th></tr>
 		<?php	while($field=$result->fetch_assoc()){
-				print("<tr><td>".$field['firstname']." ".$field['lastname']."</td>");
-				print("<td><input  type=\"hidden\" name=\"username\" value=\"".$field['username']."\">".$field['username']."</input></td>");
+				print("<tr><td>".$field['firstname']." ".$field['lastname']." ".$field['username']."</td>");
 				print("<td>".$field['role']."</td></tr>");
 				print("</table>");
 				print("<form name=\"decisionform\" method=\"POST\" action=\"adminPage.php\">");
@@ -86,7 +92,7 @@ $connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 		$result=$connect->query("select * from signupdetails where decision='D'");
 		if($result->num_rows>0){
 			while($field=$result->fetch_assoc()){
-				print($field['firstname']." ". $field['lastname'])."<br>";
+				print($field['firstname']." ". $field['lastname']." ".$field['username'])."<br>";
 			}
 		}
 	}

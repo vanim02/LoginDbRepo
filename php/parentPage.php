@@ -26,7 +26,8 @@
 	
 	</tr>
 	<?php
-		$connect=mysqli_connect("127.0.0.1","root","1234","logindb");
+		include 'dbconnect.php';
+		$connect=connect();
 		if($connect){
 			$query="select * from signupdetails where role='child' and parent='".$_SESSION["inputuser"]."'";
 			//print($query);

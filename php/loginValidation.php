@@ -1,6 +1,8 @@
 <?php
+include 'dbconnect.php';
 if(isset($_POST['submitlogin'])){
-	$connect=mysqli_connect("127.0.0.1","root","1234","logindb");
+	
+	$connect=connect();
 	if($connect){
 		session_start();
 		$_SESSION["inputuser"]=$_POST['username'];

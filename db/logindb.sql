@@ -11,8 +11,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping database structure for logindb
-CREATE DATABASE IF NOT EXISTS `logindb` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `logindb`;
+CREATE DATABASE IF NOT EXISTS `vanilogindb` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `vanilogindb`;
 
 
 -- Dumping structure for table logindb.candidate
@@ -105,25 +105,56 @@ CREATE TABLE IF NOT EXISTS `signupdetails` (
   `dateofbirth` date DEFAULT NULL,
   `gender` varchar(10) DEFAULT NULL,
   `password` varchar(30) DEFAULT NULL,
+  `role` varchar(10) DEFAULT NULL,
+  `parent` varchar(40) DEFAULT NULL,
+  `signupdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `decision` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table logindb.signupdetails: ~11 rows (approximately)
+-- Dumping data for table logindb.signupdetails: ~21 rows (approximately)
 /*!40000 ALTER TABLE `signupdetails` DISABLE KEYS */;
-INSERT INTO `signupdetails` (`username`, `firstname`, `lastname`, `dateofbirth`, `gender`, `password`, `decision`) VALUES
-	('child1', 'c1f1', 'c1l1', '1981-01-19', 'female', 'pass', 'A'),
-	('child2', 'c2f2', 'c2l2', '1983-03-03', 'male', 'pass', 'A'),
-	('child3', 'c3f3', 'c3l3', '1980-02-04', 'female', 'pass', 'A'),
-	('child4', 'c4f4', 'c4l4', '1983-01-19', 'male', 'pass', 'A'),
-	('child5', 'c5f5', 'c5l5', '1980-05-19', 'male', 'pass', 'A'),
-	('child6', 'c6f6', 'c6l6', '1988-02-04', 'female', 'pass', 'A'),
-	('child7', 'c7f7', 'c7l7', '1981-01-19', 'female', 'pass', 'D'),
-	('parent1', 'p1f1', 'p1l1', '1962-05-29', 'male', 'pass', 'A'),
-	('parent2', 'p2f2', 'p2l2', '1960-05-29', 'female', 'pass', 'A'),
-	('teacher1', 't1f1', 't1l1', '1966-06-09', 'female', 'pass', 'A'),
-	('teacher2', 't2f2', 't2l2', '1964-05-29', 'male', 'pass', 'A');
+INSERT INTO `signupdetails` (`username`, `firstname`, `lastname`, `dateofbirth`, `gender`, `password`, `role`, `parent`, `signupdate`, `decision`) VALUES
+	('child1', 'c1f1', 'c1l1', '1981-01-19', 'female', 'pass', 'child', 'parent1', '2016-12-20 16:35:42', 'A'),
+	('child10', 'c10f10', 'c10l10', '1990-12-04', 'female', 'pass', 'child', 'parent1', '2016-12-24 11:41:23', 'A'),
+	('child12', 'vani', 'malleboni', '1990-12-04', '', 'pass', 'child', 'parent1', '2016-12-24 12:04:53', 'A'),
+	('child2', 'c2f2', 'c2l2', '1983-03-03', 'male', 'pass', 'child', 'parent2', '2016-12-20 16:35:45', 'A'),
+	('child3', 'c3f3', 'c3l3', '1980-02-04', 'female', 'pass', 'child', 'parent1', '2016-12-20 16:35:47', 'A'),
+	('child4', 'c4f4', 'c4l4', '1983-01-19', 'male', 'pass', 'child', 'parent2', '2016-12-20 16:35:49', 'A'),
+	('child5', 'c5f5', 'c5l5', '1980-05-19', 'male', 'pass', 'child', 'parent1', '2016-12-20 16:35:52', 'A'),
+	('child6', 'c6f6', 'c6l6', '1988-02-04', 'female', 'pass', 'child', 'parent2', '2016-12-20 16:35:55', 'A'),
+	('child7', 'c7f7', 'c7l7', '1981-01-19', 'female', 'pass', 'child', 'parent5', '2016-12-24 11:41:37', 'A'),
+	('parent1', 'p1f1', 'p1l1', '1962-05-29', 'male', 'pass', 'parent', NULL, '2016-12-19 16:30:26', 'A'),
+	('parent10', 'vani', 'malleboni', '1990-12-04', '', 'pass', 'parent', NULL, '2016-12-24 11:43:14', 'D'),
+	('parent2', 'p2f2', 'p2l2', '1960-05-29', 'female', 'pass', 'parent', NULL, '2016-12-19 16:30:29', 'A'),
+	('parent3', 'p3f3', 'p3l3', '1987-12-20', 'female', 'pass', 'parent', NULL, '2016-12-24 12:00:49', 'A'),
+	('parent4', 'p4f4', 'p4l4', '1987-12-20', 'male', 'pass', 'parent', NULL, '2016-12-19 20:11:08', 'D'),
+	('parent5', 'p5f5', 'p5l5', '1990-12-02', 'male', 'pass', 'parent', NULL, '2016-12-20 06:47:24', 'A'),
+	('parent6', 'p6f6', 'p6l6', '1990-12-02', 'male', 'pass', 'parent', NULL, '2016-12-24 12:01:01', 'D'),
+	('ravicm', 'ravi', 'mall', '1990-12-02', 'male', 'pass', 'child', 'parent5', '2016-12-21 15:54:45', NULL),
+	('teacher1', 't1f1', 't1l1', '1966-06-09', 'female', 'pass', 'teacher', NULL, '2016-12-19 19:57:05', 'A'),
+	('teacher2', 't2f2', 't2l2', '1964-05-29', 'male', 'pass', 'teacher', NULL, '2016-12-19 19:57:13', 'A'),
+	('teacher3', 't1f1', 't1l1', '1987-12-20', 'female', 'pass', 'teacher', NULL, '2016-12-19 15:43:43', NULL),
+	('teacher4', 't4f4', 't4l4', '1990-12-02', 'male', 'pass', 'teacher', NULL, '2016-12-19 20:40:43', 'D'),
+	('vanim02', 'vani', 'malleboni', '1990-12-02', 'female', 'pass', NULL, NULL, '2016-12-19 15:29:22', NULL);
 /*!40000 ALTER TABLE `signupdetails` ENABLE KEYS */;
+
+
+-- Dumping structure for table logindb.simple
+CREATE TABLE IF NOT EXISTS `simple` (
+  `name` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table logindb.simple: ~6 rows (approximately)
+/*!40000 ALTER TABLE `simple` DISABLE KEYS */;
+INSERT INTO `simple` (`name`) VALUES
+	('vani'),
+	('ravi'),
+	('v'),
+	('kl'),
+	('kl'),
+	('sumant');
+/*!40000 ALTER TABLE `simple` ENABLE KEYS */;
 
 
 -- Dumping structure for table logindb.threshold

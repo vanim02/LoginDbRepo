@@ -6,6 +6,7 @@
 
 <body>
 <?php
+	include 'dbconnect.php';
 	if(isset($_POST['addchild'])){
 		$username=$_POST['username'];
 	$firstname=$_POST['firstname'];
@@ -16,7 +17,7 @@
 
 		
 		session_start();
-		$connect=mysqli_connect("127.0.0.1","root","1234","logindb");
+	$connect=connect();
 		if($connect){
 			if(empty($gender)){
 				$gender=null;

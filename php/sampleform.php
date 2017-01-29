@@ -4,13 +4,10 @@
 <body>
 <?php 
 if(isset($_POST['submit'])){
-	echo 'submtted';
 	$firstname=$_POST['firstname'];
 	if(!empty($firstname)){
-		echo 'connecting';
-		$connect=mysqli_connect("85.10.205.173","vanilogindb","65096865","vanilogindb");
+		$connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 		if($connect){	
-		echo 'connected';
 			$result=$connect->query("insert into simple values ('".$firstname."')");
 			print($firstname);
 		}

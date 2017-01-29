@@ -17,8 +17,7 @@
 			</tr>
 			<?php
 			
-				include 'dbconnect.php';
-				$connect=connect();
+				$connect=mysqli_connect("127.0.0.1","root","1234","logindb");
 				if($connect){
 					$query="select * from signupdetails where role='parent'";
 					$result=$connect->query($query);

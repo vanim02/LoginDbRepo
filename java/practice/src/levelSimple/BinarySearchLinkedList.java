@@ -1,7 +1,9 @@
 package levelSimple;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
 
 public class BinarySearchLinkedList {
 
@@ -18,6 +20,11 @@ public class BinarySearchLinkedList {
 		list1.add(8);
 		list1.add(10);
 		
+
+		Iterator<Integer> itr=list1.iterator();
+		while(itr.hasNext()){
+			System.out.println(itr.next());
+		}
 		int ele=8;
 		int low=0,high = list1.size()-1;
 		while(low<=high){
@@ -31,6 +38,7 @@ public class BinarySearchLinkedList {
 				low=mid+1;
 			}
 		}
+		
 	}
 
 }

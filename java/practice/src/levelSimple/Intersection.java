@@ -21,11 +21,7 @@ public class Intersection {
 		Arrays.sort(num2);
 		int i = 0, j = 0;
 		int size;
-		if (num1.length <= num2.length) {
-			size = num1.length;
-		} else {
-			size = num2.length;
-		}
+		size=num1.length <= num2.length ? num1.length : num2.length;
 		int[] res = new int[size];
 		Arrays.fill(res, -1);
 		int l = 0;

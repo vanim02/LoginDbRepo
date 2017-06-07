@@ -13,25 +13,24 @@ public class ContainsDuplicate {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int[] num=new int[]{1,2,3,4,2};
+		int[] num=new int[]{1,2,3,4,5};
 		boolean res=containsDuplicate(num);
 		System.out.println(res);
 	}
 	
 	private static boolean containsDuplicate(int[] num){
-		boolean res =false;
 		if(num!=null && num.length!=0){
 		HashSet<Integer> hs=new HashSet<Integer>();
 		for(int i=0;i<num.length;i++){
 			if(!hs.contains(num[i])){
 				hs.add(num[i]);
+			}else{
+				return true;
 			}
 		}
-		if(num.length==hs.size())
-			res= false;
-		res= true;
+	
 		}
-		return res;
+		return false;
 	}
 
 }

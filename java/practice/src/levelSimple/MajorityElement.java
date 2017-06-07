@@ -22,9 +22,9 @@ public class MajorityElement {
 				temp.put(num[i],1);
 			else{
 				temp.put(num[i],temp.get(num[i])+1);
-				if(temp.get(num[i])>num.length/2)
-					return num[i];
 			}
+			if(temp.get(num[i])>num.length/2)
+				return num[i];
 		}
 		return -1;
 	}

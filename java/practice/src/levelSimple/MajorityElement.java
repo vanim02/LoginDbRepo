@@ -11,27 +11,29 @@ import java.util.HashMap;
 public class MajorityElement {
 
 	public static void main(String[] args) {
-		int[] num=new int[]{1,2,31,51,5};
+		int[] num=new int[]{1,2,2,2,5};
 		int ele=findMajority(num);
 		System.out.println(ele);
 	}
 	private static int findMajority(int[] num){
 		HashMap<Integer, Integer> temp=new HashMap<Integer, Integer>();
-		for(int i=0;i<num.length;i++){
-			if(temp.get(num[i])==null)
-				temp.put(num[i],1);
-			else{
-				temp.put(num[i],temp.get(num[i])+1);
-			}
-			if(temp.get(num[i])>num.length/2)
-				return num[i];
-		}
-		return -1;
+		int res=-1;
+		 		for(int i=0;i<num.length;i++){
+			 		if(temp.get(num[i])==null)
+			 			temp.put(num[i],1);
+			 		else{
+			 			int freq=temp.get(num[i]);
+			 			temp.put(num[i],freq+1);
+ 			 			if(freq+1>num.length/2)
+ 			 			return num[i];
+			 		}
+			 	}
+		 		return res;
 	}
 	/**
 	 *  O(space): O(n)
-	 *  abs space: n
+	 *  abs space: n+1
 	 *  O(time): O(n)
-	 *  abs time: 3n
+	 *  abs time: 4n
 	 */
 }

@@ -34,4 +34,10 @@ public class CountPrimes {
 		}
 		return count;
 	}
+	/**
+	 * abs space:2
+	 * O(Space):constant
+	 * abs time:n*(3n/2)
+	 * O(time):O(n*n/2)
+	 */
 }

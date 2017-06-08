@@ -31,4 +31,10 @@ public class FirstBadVersion {
 		    return low;
 	
 	}
+	/**
+	 * abs space:3
+	 * O(space): const
+	 * abs time: less than n
+	 * O(time): O(log n)
+	 */
 }

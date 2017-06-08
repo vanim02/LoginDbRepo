@@ -20,7 +20,12 @@ public class ReverseInteger {
 		if(num<0){
 			neg=true;
 		}
+		
+		//This can just be num=-num
 		num=Math.abs(num);
+		
+		
+		//this could overflow
 		int rev=0;
 		while(num>0){
 			rev=rev*10+num%10;

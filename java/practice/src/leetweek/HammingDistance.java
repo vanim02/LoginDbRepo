@@ -1,4 +1,4 @@
-package levelSimple;
+package leetweek;
 /**
  * hamming distance
  * how many bits differ with corresponding bits of other number

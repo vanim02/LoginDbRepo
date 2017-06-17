@@ -1,4 +1,4 @@
-package levelSimple;
+package leetweek24;
 /**
  * Count the number of prime numbers less than a non-negative number, n.
  * @author ramulu
@@ -38,6 +38,6 @@ public class CountPrimes {
 	 * abs space:2
 	 * O(Space):constant
 	 * abs time:n*(3n/2)
-	 * O(time):O(n*n/2)
+	 * O(time):O(n^2)
 	 */
 }

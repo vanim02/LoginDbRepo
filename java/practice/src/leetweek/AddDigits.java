@@ -1,4 +1,4 @@
-package levelSimple;
+package leetweek;
 
 public class AddDigits {
 

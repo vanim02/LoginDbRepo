@@ -1,4 +1,4 @@
-package levelSimple;
+package leetweek;
 
 import java.util.ArrayList;
 import java.util.List;

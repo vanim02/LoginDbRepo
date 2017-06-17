@@ -6,7 +6,8 @@ Example1: x = 123, return 321
 Example2: x = -123, return -321
 
 Note:
-The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows
+The input is assumed to be a 32-bit signed integer.
+ Your function should return 0 when the reversed integer overflows
  */
 public class ReverseInteger {
 
@@ -20,7 +21,12 @@ public class ReverseInteger {
 		if(num<0){
 			neg=true;
 		}
+		
+		//This can just be num=-num
 		num=Math.abs(num);
+		
+		
+		//this could overflow
 		int rev=0;
 		while(num>0){
 			rev=rev*10+num%10;
@@ -31,6 +37,7 @@ public class ReverseInteger {
 		return rev;
 	}
 	/**
+	 * 
 	 * abs space: 1
 	 * O(space): constant
 	 * abs time: 2*digits
